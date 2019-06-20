@@ -20,6 +20,9 @@ public class CineServiceImplement implements CineService{
 	@Autowired
 	CineRepository cineRepository;
 	
+	@Autowired
+	SalaService salaService;
+	
 	@Override
 	public List<CineResponse> allCines() {
 		// TODO Auto-generated method stub
@@ -35,6 +38,7 @@ public class CineServiceImplement implements CineService{
 			cineResponse.setDistrito(cine.getDistrito());
 			cineResponse.setFechInicio(cine.getFechIni());
 			cineResponse.setTipoCine(cine.getTipoCine().getNomTipoCine());
+			cineResponse.setLstSalaResponse(salaService.allSalasByCine(cine.getIdCine()));
 			lstCineResponse.add(cineResponse);			
 		}
 		return lstCineResponse;
@@ -44,7 +48,7 @@ public class CineServiceImplement implements CineService{
 	public Cine addCine(CineRequest cineRequest) {
 		// TODO Auto-generated method stub
 		Cine cine = new Cine();
-		if(cine.getIdCine() == null) {
+		if(cineRequest.getIdCine() == null) {
 			cine.setIdCine(generarCodigoCine());
 		}else {
 			cine.setIdCine(cineRequest.getIdCine());
@@ -78,6 +82,7 @@ public class CineServiceImplement implements CineService{
 		cineResponse.setDistrito(cine.getDistrito());
 		cineResponse.setFechInicio(cine.getFechIni());
 		cineResponse.setTipoCine(cine.getTipoCine().getNomTipoCine());
+		cineResponse.setLstSalaResponse(salaService.allSalasByCine(idcine));
 		return cineResponse;
 	}
 	

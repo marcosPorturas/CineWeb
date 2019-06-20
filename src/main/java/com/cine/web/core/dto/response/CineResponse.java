@@ -1,6 +1,7 @@
 package com.cine.web.core.dto.response;
 
 import java.util.Date;
+import java.util.List;
 
 public class CineResponse {
 
@@ -11,6 +12,8 @@ public class CineResponse {
 	private String distrito;
 	private Date fechInicio;
 	private String tipoCine;
+	
+	private List<SalaResponse> lstSalaResponse;
 	
 	public Integer getIdCine() {
 		return idCine;
@@ -54,6 +57,12 @@ public class CineResponse {
 	}
 	public void setNombreCine(String nombreCine) {
 		this.nombreCine = nombreCine;
+	}
+	public List<SalaResponse> getLstSalaResponse() {
+		return lstSalaResponse;
+	}
+	public void setLstSalaResponse(List<SalaResponse> lstSalaResponse) {
+		this.lstSalaResponse = lstSalaResponse;
 	}
 	
 }
